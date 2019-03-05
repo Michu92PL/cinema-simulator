@@ -14,8 +14,8 @@ public class Cinema {
     private String name;
     private String adress;
     private String telephone;
-    //cascade = {CascadeType.MERGE, CascadeType.PERSIST}
-    @OneToMany(mappedBy = "cinema",cascade = {CascadeType.ALL})
+
+    @OneToMany(mappedBy = "cinema",cascade = CascadeType.ALL)
     private List<Screening> screenings;
 
     public Cinema() {
@@ -48,6 +48,10 @@ public class Cinema {
         return telephone;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -58,9 +62,5 @@ public class Cinema {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
-    public Long getId() {
-        return id;
     }
 }
