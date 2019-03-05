@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj nowy film</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <style>
+        .wrap{
+            width: 40%;
+            word-break: break-word;
+        }
+        p {
+            line-height: 32px;   /* within paragraph */
+            margin-bottom: 30px; /* between paragraphs */
+        }
+    </style>
+</head>
+<body>
+<div class="container" align="center">
+    <h2>Szczegóły filmu</h2>
+
+    <h3>Tytuł:</h3>
+    <p style="font-size: 160%" th:text="${movie.title}">super tytuł filmu</p>
+    <h3>Gatunek:</h3>
+    <p style="font-size: 160%" th:text="${movie.genre}">super gatunek filmu</p>
+    <h3>Opis:</h3>
+    <div class="wrap">
+    <p style="font-size: 160%" th:text="${movie.description}">film opowiada o najlepszej grze komputerowej w dziejach ludzkosci jest polecany do ogladania dla psow i kotw niczym sratatata nie przerywaj linii</p>
+    </div>
+    <h3>GDZIE OBEJRZEĆ:</h3>
+
+</div>
+</body>
+</html>
