@@ -1,5 +1,7 @@
 package pl.michu.cinemasimulator.model;
 
+import pl.michu.cinemasimulator.exceptions.NotEnoughFreeSeatsException;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,12 +10,15 @@ public class Screening {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String hour;
-
+    private String startTime;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Cinema cinema;
-    private Integer seats;
+    private Integer seatsTotal;
+    private Double ticketPrize;
+    private Integer seatsTaken = 0;
+    private Integer seatsFree = 0;
+    @Transient
+    private Double expectedIncome;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Movie movie;
 
@@ -21,15 +26,45 @@ public class Screening {
 
     }
 
-    public Screening(String hour, Integer seats) {
-        this.hour = hour;
-        this.seats = seats;
+    public Screening(String startTime, Integer  seatsTotal, Double ticketPrize) {
+        this.startTime = startTime;
+        this.seatsTotal = seatsTotal;
+        this.ticketPrize = ticketPrize;
+        this.seatsFree = seatsTotal;
     }
 
-    public Screening(String hour, Cinema cinema, Integer seats) {
-        this.hour = hour;
+    public Screening(String startTime, Cinema cinema, Integer seatsTotal, Double ticketPrize) {
+        this.startTime = startTime;
         this.cinema = cinema;
-        this.seats = seats;
+        this.seatsTotal = seatsTotal;
+        this.ticketPrize = ticketPrize;
+        this.seatsFree = seatsTotal;
+    }
+
+    public Screening(String startTime, Integer seatsTotal) {
+        this.startTime = startTime;
+        this.seatsTotal = seatsTotal;
+        this.ticketPrize = 0.0;
+        this.seatsFree = seatsTotal;
+
+    }
+
+    public Screening(String startTime, Cinema cinema, Integer seatsTotal) {
+        this.startTime = startTime;
+        this.cinema = cinema;
+        this.seatsTotal = seatsTotal;
+        this.ticketPrize = 0.0;
+        this.seatsFree = seatsTotal;
+    }
+
+    public void reserveSeats(Integer number){
+        if(seatsFree < number){
+            throw new NotEnoughFreeSeatsException("Not enough free seats!");
+        }
+        else{
+            seatsTaken = seatsTaken + number;
+            seatsFree = seatsFree - seatsTaken;
+        }
     }
 
     public void setCinema(Cinema cinema) {
@@ -56,11 +91,16 @@ public class Screening {
         this.cinema = null;
     }
 
-    public String getHour() {
-        return hour;
+    public Double getExpectedIncome(){
+        expectedIncome =  seatsTaken * ticketPrize;
+        return expectedIncome;
     }
 
-    public Integer getSeats() {
-        return seats;
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public Integer getSeatsTotal() {
+        return seatsTotal;
     }
 }
