@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj nowy film</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" align="center">
+    <h2>DODAJ FILM</h2>
+    <form class="form-horizontal" th:object="${movie}" th:action="@{/movies}" th:method="post">
+        <div class="form-group">
+            <label class="control-label">Tytuł:</label>
+            <input type="text" class="form-control" th:field="*{title}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Gatunek</label>
+            <input type="text" class="form-control" th:field="*{genre}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Opis</label>
+            <input type="text" class="form-control" th:field="*{description}"/>
+        </div>
+        <div align="center">
+            <button type="submit" class="btn btn-default">Dodaj</button>
+        </div>
+    </form>
+    <div align="center">
+        <a th:href="@{/movies}">Wróć</a>
+    </div>
+</div>
+</body>
+</html>
