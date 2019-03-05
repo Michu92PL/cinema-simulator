@@ -11,20 +11,26 @@
     <h2>DODAJ KINO</h2>
     <form class="form-horizontal" th:object="${cinema}" th:action="@{/cinemas}" th:method="post">
         <div class="form-group">
-            <label class="control-label">Nazwa:</label>
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Nazwa:</label>
             <input type="text" class="form-control" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
         </div>
         <div class="form-group">
-            <label class="control-label">Adres:</label>
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Adres:</label>
             <input type="text" class="form-control" th:field="*{adress}"/>
+            <p th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"/>
         </div>
         <div class="form-group">
-            <label class="control-label">Nr telefonu::</label>
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Nr telefonu::</label>
             <input type="text" class="form-control" th:field="*{telephone}"/>
+            <p th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"/>
         </div>
         <div align="center">
             <button type="submit" class="btn btn-default">Dodaj</button>
         </div>
+    </form>
+    <form style="padding-top: 5px" class="form-horizontal" th:action="@{/movies}" th:method="get">
+        <button type="submit" class="btn btn-default">Anuluj</button>
     </form>
 </div>
 </body>
