@@ -1,6 +1,7 @@
 package pl.michu.cinemasimulator;
 
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,8 +18,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @Component
 public class TestClass implements CommandLineRunner {
@@ -47,19 +50,19 @@ public class TestClass implements CommandLineRunner {
         Movie movie2 = new Movie("gwiezdne wojny", "asdf", "epickosc");
         Movie movie3 = new Movie("batman", "asdf", "akcja");
 
-        Screening screening = new Screening("11", 11);
+        Screening screening = new Screening("11", 15,15.30);
         screening.setMovie(movie1);
         movie1.addScreening(screening);
 
-        Screening screening2 = new Screening("22",22);
+        Screening screening2 = new Screening("22",22, 18.20);
         screening2.setMovie(movie2);
         movie2.addScreening(screening2);
 
-        Screening screening3 = new Screening("33",33);
+        Screening screening3 = new Screening("33",33, 15.90);
         screening3.setMovie(movie3);
         movie3.addScreening(screening3);
 
-        Screening screening4 = new Screening("44",44);
+        Screening screening4 = new Screening("44",44, 10.0);
         screening4.setMovie(movie1);
         movie1.addScreening(screening4);
 
@@ -81,7 +84,7 @@ public class TestClass implements CommandLineRunner {
         respository.delete(kino);*/
 
         // respository.delete(cinema);
-        respository.deleteById(1L);
+        //respository.deleteById(1L);
         //respository.flush();
 
         for(Movie m : movieRepository.findAll()){
@@ -91,6 +94,18 @@ public class TestClass implements CommandLineRunner {
             }
             System.out.println();
         }
+        screening.reserveSeats(2);
+        screening2.reserveSeats(6);
+        screening3.reserveSeats(12);
+        screening4.reserveSeats(12);
+        /*List<Screening> sdf = new ArrayList<>();
+        sdf.add(screening);
+        sdf.add(screening2);
+        sdf.add(screening3);
+        sdf.add(screening4);
+        screeningRepository.saveAll(sdf);
+        respository.save(cinema);*/
+        System.out.println("expected income ::::::" + cinema.getExpectedIncome());
         //respository.delete(cinema);
 
         /*screening.setMovie(movie);
