@@ -46,23 +46,23 @@ public class TestClass implements CommandLineRunner {
         Cinema cinema2 = new Cinema("citykino", "zielona", "1asdasd");
 
 
-        Movie movie1 = new Movie("gladiator", "asdf", "dramat");
-        Movie movie2 = new Movie("gwiezdne wojny", "asdf", "epickosc");
-        Movie movie3 = new Movie("batman", "asdf", "akcja");
+        Movie movie1 = new Movie("gladiator", "asdfqqqq", "dramat");
+        Movie movie2 = new Movie("gwiezdne wojny", "asdfqqqq", "epickosc");
+        Movie movie3 = new Movie("batman", "asdfqqq", "akcja");
 
-        Screening screening = new Screening("11", 15,15.30);
+        Screening screening = new Screening("11", 15,15.34);
         screening.setMovie(movie1);
         movie1.addScreening(screening);
 
-        Screening screening2 = new Screening("22",22, 18.20);
+        Screening screening2 = new Screening("22",22, 18.22);
         screening2.setMovie(movie2);
         movie2.addScreening(screening2);
 
-        Screening screening3 = new Screening("33",33, 15.90);
+        Screening screening3 = new Screening("33",33, 15.99);
         screening3.setMovie(movie3);
         movie3.addScreening(screening3);
 
-        Screening screening4 = new Screening("44",44, 10.0);
+        Screening screening4 = new Screening("44",44, 10.99);
         screening4.setMovie(movie1);
         movie1.addScreening(screening4);
 
