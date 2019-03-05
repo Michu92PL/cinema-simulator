@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>List of movies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" align="center">
+    <table class="table">
+        <h2>Lista filmów</h2>
+        <tbody th:each="movie : ${movies}">
+        <tr>
+            <td th:text="${movie.title}"></td>
+            <td><a th:href="${'/movie?id='+ movie.id}">Szczegóły filmu</a></td>
+            <td><a th:href="${'/where?id='+ movie.id}">Gdzie obejrzeć</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div align="center">
+        <form class="form-horizontal" th:action="@{/newmovie}" th:method="get">
+            <input type="submit" value="Dodaj Film" />
+        </form>
+    </div>
+</div>
+</body>
+</html>
