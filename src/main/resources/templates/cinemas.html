@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>List of cinemas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" align="center">
+    <h2>Lista kin</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <td><h5>Nazwa</h5></td>
+                <td><h5>Adres</h5></td>
+                <td><h5>Telefon</h5></td>
+                <td><h5>Repertuar</h5></td>
+                <td><h5>Usuń kino</h5></td>
+            </tr>
+        </thead>
+    <tbody th:each="cinema : ${cinemas}">
+        <tr>
+            <td th:text="${cinema.name}"></td>
+            <td th:text="${cinema.adress}"></td>
+            <td th:text="${cinema.telephone}"></td>
+            <td>Wkrótce!</td>
+            <td><a th:href="${'cinema/delete/'+ cinema.id}">Usuń</a></td>
+        </tr>
+    </tbody>
+    </table>
+    <div class="row" align="left">
+        <form style="padding-right: 10px" class="form-horizontal" th:action="@{/newcinema}" th:method="get">
+            <input type="submit" value="Dodaj Kino" />
+        </form>
+
+        <form style="padding-right: 10px" class="form-horizontal" th:action="@{/newmovie}" th:method="get">
+            <input type="submit" value="Dodaj Film do bazy" />
+        </form>
+        <form style="padding-right: 10px" class="form-horizontal" th:action="@{/movies}" th:method="get">
+            <input type="submit" value="Lista filmów" />
+        </form>
+    </div>
+</div>
+</body>
+</html>
