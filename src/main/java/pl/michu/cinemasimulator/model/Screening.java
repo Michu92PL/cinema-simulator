@@ -9,17 +9,11 @@ public class Screening {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String startTime;
+    private String hour;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Cinema cinema;
-
-    private Integer seatsTotal;
-    private Integer seatsFree;
-    private Integer seatsTaken = 0;
-    private Integer ticketPrize;
-    private Integer roomNumber;
-
+    private Integer seats;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Movie movie;
 
@@ -27,19 +21,15 @@ public class Screening {
 
     }
 
-    public Screening(String startTime, Integer seatsTotal) {
-        this.startTime = startTime;
-        this.seatsTotal = seatsTotal;
+    public Screening(String hour, Integer seats) {
+        this.hour = hour;
+        this.seats = seats;
     }
 
-    public Screening(String startTime, Cinema cinema, Integer seatsTotal) {
-        this.startTime = startTime;
+    public Screening(String hour, Cinema cinema, Integer seats) {
+        this.hour = hour;
         this.cinema = cinema;
-        this.seatsTotal = seatsTotal;
-    }
-
-    public void deleteCinema(){
-        this.cinema = null;
+        this.seats = seats;
     }
 
     public void setCinema(Cinema cinema) {
@@ -54,19 +44,23 @@ public class Screening {
         return cinema;
     }
 
+    public Movie getMovie() {
+        return this.movie;
+    }
+
     public Long getId() {
         return id;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public void deleteCinema() {
+        this.cinema = null;
     }
 
-    public Integer getSeatsTotal() {
-        return seatsTotal;
+    public String getHour() {
+        return hour;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public Integer getSeats() {
+        return seats;
     }
 }
