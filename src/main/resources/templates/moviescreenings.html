@@ -19,8 +19,8 @@
         <tbody th:each="screening : ${screenings}">
         <tr>
             <td th:text="${screening.cinema.name}"></td>
-            <td th:text="${screening.hour}"></td>
-            <td th:text="${screening.seats}"></td>
+            <td th:text="${screening.startTime}"></td>
+            <td th:text="${screening.seatsTotal}"></td>
             <td>Wkrótce</td>
         </tr>
         </tbody>
