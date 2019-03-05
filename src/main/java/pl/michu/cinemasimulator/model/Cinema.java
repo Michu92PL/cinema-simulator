@@ -52,6 +52,13 @@ public class Cinema {
         return id;
     }
 
+    public Double getExpectedIncome(){
+        if(!screenings.isEmpty()) {
+            return screenings.stream().mapToDouble(Screening::getExpectedIncome).reduce(0.0, Double::sum);
+        } else
+            return 0.0;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -63,4 +70,5 @@ public class Cinema {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
 }
