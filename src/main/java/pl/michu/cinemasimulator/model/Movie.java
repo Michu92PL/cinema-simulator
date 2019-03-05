@@ -1,6 +1,12 @@
 package pl.michu.cinemasimulator.model;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +17,14 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 2, max = 40,message = "Tytuł musi mieć między 2 a 40 znaków")
     private String title;
+    @NotNull
+    @Size(min = 5, max = 100, message = "Opis musi mieć między 5 a 100 znaków")
     private String description;
+    @NotNull
+    @Size(min = 2, max = 20, message = "Gatunek filmu musi mieć między 2 a 20 znaków")
     private String genre;
 
     @OneToMany(mappedBy = "movie", cascade = {CascadeType.MERGE, CascadeType.PERSIST,})
