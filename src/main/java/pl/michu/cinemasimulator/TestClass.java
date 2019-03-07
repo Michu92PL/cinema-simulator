@@ -42,7 +42,7 @@ public class TestClass implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
 
-        Cinema cinema = new Cinema("multikino", "towarowa", "12412512");
+       /* Cinema cinema = new Cinema("multikino", "towarowa", "12412512");
         Cinema cinema2 = new Cinema("citykino", "zielona", "1asdasd");
 
 
@@ -79,9 +79,9 @@ public class TestClass implements CommandLineRunner {
         respository.save(cinema);
         respository.save(cinema2);
 
-        /*Cinema kino = respository.getOne(1L);
+        *//*Cinema kino = respository.getOne(1L);
         System.out.println(kino);
-        respository.delete(kino);*/
+        respository.delete(kino);*//*
 
         // respository.delete(cinema);
         //respository.deleteById(1L);
@@ -98,27 +98,27 @@ public class TestClass implements CommandLineRunner {
         screening2.reserveSeats(6);
         screening3.reserveSeats(12);
         screening4.reserveSeats(12);
-        /*List<Screening> sdf = new ArrayList<>();
+        *//*List<Screening> sdf = new ArrayList<>();
         sdf.add(screening);
         sdf.add(screening2);
         sdf.add(screening3);
         sdf.add(screening4);
         screeningRepository.saveAll(sdf);
-        respository.save(cinema);*/
+        respository.save(cinema);*//*
         System.out.println("expected income ::::::" + cinema.getExpectedIncome());
         //respository.delete(cinema);
 
-        /*screening.setMovie(movie);
+        *//*screening.setMovie(movie);
         screening2.setMovie(movie);
         movie.addScreening(screening);
         movie.addScreening(screening2);
         cinema.addScreening(screening);
-        cinema.addScreening(screening2);*/
+        cinema.addScreening(screening2);*//*
 
         //em.persist(cinema);
 
         //Cinema test = em.find(Cinema.class, cinema.getId());
         //test.getScreenings().forEach(s -> s.getMovie().getTitle());
-
+*/
     }
 }
