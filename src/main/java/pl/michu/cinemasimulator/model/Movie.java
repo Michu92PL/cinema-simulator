@@ -21,13 +21,13 @@ public class Movie {
     @Size(min = 2, max = 40,message = "Tytuł musi mieć między 2 a 40 znaków")
     private String title;
     @NotNull
-    @Size(min = 5, max = 100, message = "Opis musi mieć między 5 a 100 znaków")
+    @Size(min = 5, max = 200, message = "Opis musi mieć między 5 a 200 znaków")
     private String description;
     @NotNull
     @Size(min = 2, max = 20, message = "Gatunek filmu musi mieć między 2 a 20 znaków")
     private String genre;
 
-    @OneToMany(mappedBy = "movie", cascade = {CascadeType.MERGE, CascadeType.PERSIST,})
+    @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
     private List<Screening> screenings;
 
     public Movie() {
