@@ -37,7 +37,7 @@ public class CinemaServiceImpl implements CinemaService {
 
     @Override
     public Cinema findById(Long id) {
-        return cinemaRespository.findById(id).orElseThrow(()-> new CinemaNotFoundException(id));
+        return cinemaRespository.findById(id).orElseThrow(() -> new CinemaNotFoundException(id));
     }
 
     @Override
@@ -47,16 +47,11 @@ public class CinemaServiceImpl implements CinemaService {
         //cinema.getScreenings().forEach(screening -> screening.deleteCinema());
         //cinema.getScreenings().forEach(s -> s.getMovie().deleteScreening(s));
         //screenings.stream().map(s -> s.getMovie()).forEach(movie -> movie.deleteScreening());
-        for(Screening screening : screenings){
+        for (Screening screening : screenings) {
             Movie movie = screening.getMovie();
             movie.deleteScreening(screening);
             movieService.save(movie);
         }
         cinemaRespository.deleteById(id);
-    }
-
-    @Override
-    public List<Screening> findAllScreenings(Cinema cinema) {
-        return null;
     }
 }

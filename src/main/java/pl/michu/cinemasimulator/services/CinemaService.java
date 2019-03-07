@@ -14,6 +14,4 @@ public interface CinemaService {
     void addCinema(Cinema cinema);
     Cinema findById(Long id);
     void removeCinemaById(Long id);
-    List<Screening> findAllScreenings(Cinema cinema);
-
 }
