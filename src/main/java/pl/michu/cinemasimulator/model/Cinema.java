@@ -38,6 +38,7 @@ public class Cinema {
     }
 
     public void addScreening(Screening screening){
+        screening.setCinema(this);
         screenings.add(screening);
     }
 
