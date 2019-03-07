@@ -18,7 +18,7 @@ public class Screening {
     private Integer seatsTaken = 0;
     private Integer seatsFree = 0;
     @Transient
-    private Double expectedIncome;
+    private Double expectedIncome = 0.0;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Movie movie;
 
@@ -72,6 +72,7 @@ public class Screening {
     }
 
     public void setMovie(Movie movie) {
+        movie.addScreening(this);
         this.movie = movie;
     }
 
@@ -102,5 +103,17 @@ public class Screening {
 
     public Integer getSeatsTotal() {
         return seatsTotal;
+    }
+
+    public Double getTicketPrize() {
+        return ticketPrize;
+    }
+
+    public Integer getSeatsTaken() {
+        return seatsTaken;
+    }
+
+    public Integer getSeatsFree() {
+        return seatsFree;
     }
 }
