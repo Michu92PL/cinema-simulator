@@ -17,6 +17,7 @@
                 <td><h5>Telefon</h5></td>
                 <td><h5>Spodziewany przychód</h5></td>
                 <td><h5>Repertuar</h5></td>
+                <td><h5>Dodaj seans</h5></td>
                 <td><h5>Usuń kino</h5></td>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
             <td th:text="${cinema.telephone}"></td>
             <td th:text="${cinema.getExpectedIncome()}"></td>
             <td>Wkrótce!</td>
+            <td><a th:href="${'/addscr?id='+ cinema.id}">Dodaj</a></td>
             <td><a th:href="${'cinema/delete/'+ cinema.id}">Usuń</a></td>
         </tr>
     </tbody>
