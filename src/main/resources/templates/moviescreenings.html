@@ -16,8 +16,11 @@
         <td><h5>Wolne miejsca</h5></td>
         <td><h5>Zarezerwuj</h5></td>
         </thead>
-        <tbody th:each="screening : ${screenings}">
-        <tr>
+        <tbody>
+        <tr align="center" th:if="${#lists.isEmpty(screenings)}">
+            <td colspan="4" style="font-weight: bold"> Film nie jest wyświetlany w żadnym kinie :( </td>
+            <tr/>
+        <tr th:each="screening : ${screenings}">
             <td th:text="${screening.cinema.name}"></td>
             <td th:text="${screening.startTime}"></td>
             <td th:text="${screening.seatsFree}"></td>
