@@ -1,13 +1,12 @@
 package pl.michu.cinemasimulator.controllers;
 
+import com.sun.deploy.nativesandbox.comm.Request;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.michu.cinemasimulator.model.Cinema;
 import pl.michu.cinemasimulator.model.Screening;
 import pl.michu.cinemasimulator.services.CinemaService;
@@ -60,4 +59,21 @@ public class CinemaController {
         return "redirect:/cinemas";
     }
 
+    @GetMapping("/addscr")
+    public String getScreeningForm(@RequestParam("id") Long id, Model model) {
+        model.addAttribute("movies", movieService.findAll());
+        Cinema cinema = cinemaService.findById(id);
+        Screening screening = new Screening();
+        screening.setCinema(cinema);
+        model.addAttribute("screening", screening);
+        return "screeningform";
+    }
+
+    @PostMapping("/addscr")
+    public String addScreeningToCinema(Screening screening){
+        System.out.println("HALO JESTEM TUTAJ");
+        System.out.println(screening.getMovie().getTitle());
+        System.out.println(screening.getCinema().getName());
+        return "redirect:/cinemas";
+    }
 }
