@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj seans</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" align="center">
+    <h2>DODAJ SEANS</h2>
+    <form class="form-horizontal" th:object="${screening}"th:action="@{/addscr}" th:method="post">
+        <div class="form-group">
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Jaki film</label>
+            <select th:field="*{movie}">
+                <option th:each="movie : ${movies}"
+                        th:value="${movie}"
+                        th:text="${movie.title}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Jaka sala</label>
+            <input type="text" class="form-control" th:field="*{hallNumber}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Godzina rozpoczęcia seansu</label>
+            <input type="text" class="form-control" th:field="*{startTime}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Ile miejsc</label>
+            <input type="text" class="form-control" th:field="*{seatsTotal}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="font-size: 20px; font-weight: bold">Cena biletu</label>
+            <input type="text" class="form-control" th:field="*{ticketPrize}"/>
+        </div>
+        <div align="center">
+            <button type="submit" class="btn btn-default">Dodaj</button>
+        </div>
+    </form>
+    <form style="padding-top: 5px" class="form-horizontal" th:action="@{/cinemas}" th:method="get">
+        <button type="submit" class="btn btn-default">Anuluj</button>
+    </form>
+</div>
+</body>
+</html>
