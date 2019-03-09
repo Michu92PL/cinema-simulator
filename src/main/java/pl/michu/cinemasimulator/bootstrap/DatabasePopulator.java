@@ -58,20 +58,20 @@ public class DatabasePopulator implements ApplicationListener<ContextRefreshedEv
         Movie movie6 = new Movie("Interstellar", "Byt ludzkości na Ziemi dobiega końca wskutek zmian klimatycznych. " +
                 "Grupa naukowców odkrywa tunel czasoprzestrzenny, który umożliwia poszukiwanie nowego domu.", "Sci-fi");
 
-        Screening screening1 = new Screening("22:00",60, 18.9);
-        Screening screening2 = new Screening("15:00",40, 14.99);
-        Screening screening3 = new Screening("13:00",75, 12.99);
-        Screening screening4 = new Screening("13:30",25, 16.99);
-        Screening screening5 = new Screening("01:00",45, 20.99);
-        Screening screening6 = new Screening("18:00",80, 25.99);
-        Screening screening7 = new Screening("17:00",30, 13.99);
-        Screening screening8 = new Screening("17:00",30, 13.99);
-        Screening screening9 = new Screening("12:00",144, 11.99);
-        Screening screening10 = new Screening("09:00",48, 9.99);
-        Screening screening11 = new Screening("10:00",100, 8.99);
-        Screening screening12 = new Screening("12:00",120, 17.99);
-        Screening screening13 = new Screening("12:30",90, 15.99);
-        Screening screening14 = new Screening("23:00",88, 18.99);
+        Screening screening1 = new Screening("22:00","3",60, 18.9);
+        Screening screening2 = new Screening("15:00","8a",40, 14.99);
+        Screening screening3 = new Screening("13:00","2",75, 12.99);
+        Screening screening4 = new Screening("13:30","7",25, 16.99);
+        Screening screening5 = new Screening("01:00","6",45, 20.99);
+        Screening screening6 = new Screening("18:00","3b",80, 25.99);
+        Screening screening7 = new Screening("17:00","4",30, 13.99);
+        Screening screening8 = new Screening("17:00","10",30, 13.99);
+        Screening screening9 = new Screening("12:00","12",144, 11.99);
+        Screening screening10 = new Screening("09:00","1c",48, 9.99);
+        Screening screening11 = new Screening("10:00","9",100, 8.99);
+        Screening screening12 = new Screening("12:00","4",120, 17.99);
+        Screening screening13 = new Screening("12:30","5",90, 15.99);
+        Screening screening14 = new Screening("23:00","1",88, 18.99);
 
         screening1.setMovie(movie3);
         screening2.setMovie(movie4);
