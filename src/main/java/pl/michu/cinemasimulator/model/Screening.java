@@ -13,6 +13,7 @@ public class Screening {
     private String startTime;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Cinema cinema;
+    private String hallNumber;
     private Integer seatsTotal;
     private Double ticketPrize;
     private Integer seatsTaken = 0;
@@ -22,38 +23,42 @@ public class Screening {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Movie movie;
 
-    private Screening() {
+    public Screening() {
 
     }
 
-    public Screening(String startTime, Integer  seatsTotal, Double ticketPrize) {
+    public Screening(String startTime, String hallNumber, Integer  seatsTotal, Double ticketPrize) {
         this.startTime = startTime;
         this.seatsTotal = seatsTotal;
+        this.hallNumber = hallNumber;
         this.ticketPrize = ticketPrize;
         this.seatsFree = seatsTotal;
     }
 
-    public Screening(String startTime, Cinema cinema, Integer seatsTotal, Double ticketPrize) {
+    public Screening(String startTime, Cinema cinema, String hallNumber, Integer seatsTotal, Double ticketPrize) {
         this.startTime = startTime;
         this.cinema = cinema;
         this.seatsTotal = seatsTotal;
         this.ticketPrize = ticketPrize;
         this.seatsFree = seatsTotal;
+        this.hallNumber = hallNumber;
     }
 
-    public Screening(String startTime, Integer seatsTotal) {
+    public Screening(String startTime, String hallNumber, Integer seatsTotal) {
         this.startTime = startTime;
         this.seatsTotal = seatsTotal;
         this.ticketPrize = 0.0;
         this.seatsFree = seatsTotal;
+        this.hallNumber = hallNumber;
 
     }
 
-    public Screening(String startTime, Cinema cinema, Integer seatsTotal) {
+    public Screening(String startTime, Cinema cinema, String hallNumber, Integer seatsTotal) {
         this.startTime = startTime;
         this.cinema = cinema;
         this.seatsTotal = seatsTotal;
         this.ticketPrize = 0.0;
+        this.hallNumber = hallNumber;
         this.seatsFree = seatsTotal;
     }
 
@@ -115,5 +120,13 @@ public class Screening {
 
     public Integer getSeatsFree() {
         return seatsFree;
+    }
+
+    public String getHallNumber() {
+        return hallNumber;
+    }
+
+    public void setHallNumber(String hallNumber) {
+        this.hallNumber = hallNumber;
     }
 }
