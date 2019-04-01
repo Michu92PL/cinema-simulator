@@ -59,21 +59,34 @@ public class CinemaController {
         return "redirect:/cinemas";
     }
 
-    @GetMapping("/addscr")
-    public String getScreeningForm(@RequestParam("id") Long id, Model model) {
-        model.addAttribute("movies", movieService.findAll());
-        Cinema cinema = cinemaService.findById(id);
-        Screening screening = new Screening();
-        screening.setCinema(cinema);
-        model.addAttribute("screening", screening);
-        return "screeningform";
+    @GetMapping("/addscr/{id}")
+    public String getScreeningForm(@PathVariable(value = "id") Long id, Model model) {
+            model.addAttribute("movies", movieService.findAll());
+            //Cinema cinema = cinemaService.findById(id);
+            Screening screening = new Screening();
+            //screening.setCinema(cinema);
+            model.addAttribute("screening", screening);
+            model.addAttribute("cinemaid", id);
+            return "screeningform";
     }
 
-    @PostMapping("/addscr")
-    public String addScreeningToCinema(Screening screening){
-        System.out.println("HALO JESTEM TUTAJ");
-        System.out.println(screening.getMovie().getTitle());
-        System.out.println(screening.getCinema().getName());
+    @PostMapping("/addscr/{id}")
+    public String addScreeningToCinema(@PathVariable(value = "id") Long id, Screening screening){
+        //System.out.println("HALO JESTEM TUTAJ");
+        //System.out.println(screening.getMovie().getTitle());
+        //System.out.println(screening.getHallNumber());
+        Cinema cinema = cinemaService.findById(id);
+        screening.setCinema(cinema);
+        cinema.addScreening(screening);
+        cinemaService.addCinema(cinema);
+
+       /* System.out.println(screening.getCinema().getName());
+        for(Screening screening1 : cinema.getScreenings()){
+            System.out.println("HALOHALOHALO" + screening1.getMovie());
+            System.out.println("HALOHALOHALO" + screening1.getTicketPrize());
+        }
+*/
+
         return "redirect:/cinemas";
     }
 }
