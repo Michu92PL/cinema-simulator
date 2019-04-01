@@ -77,8 +77,8 @@ public class Screening {
     }
 
     public void setMovie(Movie movie) {
-        movie.addScreening(this);
         this.movie = movie;
+        movie.addScreening(this);
     }
 
     public Cinema getCinema() {
@@ -128,5 +128,25 @@ public class Screening {
 
     public void setHallNumber(String hallNumber) {
         this.hallNumber = hallNumber;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setSeatsTotal(Integer seatsTotal) {
+        this.seatsTotal = seatsTotal;
+    }
+
+    public void setTicketPrize(Double ticketPrize) {
+        this.ticketPrize = ticketPrize;
+    }
+
+    public void setSeatsTaken(Integer seatsTaken) {
+        this.seatsTaken = seatsTaken;
+    }
+
+    public void setSeatsFree(Integer seatsFree) {
+        this.seatsFree = seatsFree;
     }
 }
