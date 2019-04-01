@@ -9,12 +9,12 @@
 <body>
 <div class="container" align="center">
     <h2>DODAJ SEANS</h2>
-    <form class="form-horizontal" th:object="${screening}"th:action="@{/addscr}" th:method="post">
+    <form class="form-horizontal" th:object="${screening}"th:action="@{/addscr/{id}(id = ${cinemaid})}" th:method="post">
         <div class="form-group">
             <label class="control-label" style="font-size: 20px; font-weight: bold">Jaki film</label>
             <select th:field="*{movie}">
                 <option th:each="movie : ${movies}"
-                        th:value="${movie}"
+                        th:value="${movie.getId()}"
                         th:text="${movie.title}">
                 </option>
             </select>
